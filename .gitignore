@@ -1,0 +1,6 @@
+node_modules/
+.env
+.DS_Store
+data/demo/demo-store-state.json
+data/imports/
+*.log

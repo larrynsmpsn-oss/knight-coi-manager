@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knight COI Manager - User Guide</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #0b1020;
+            color: #e8ecf3;
+            line-height: 1.6;
+        }
+        .nav {
+            background: #141b2d;
+            border-bottom: 2px solid #26314f;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-title {
+            color: #86b7ff;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+        .nav-links a {
+            color: #d1dce9;
+            margin-left: 24px;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+        .nav-links a:hover {
+            color: #86b7ff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 80px;
+            width: 280px;
+            height: calc(100vh - 80px);
+            background: #141b2d;
+            border-right: 2px solid #26314f;
+            overflow-y: auto;
+            padding: 24px;
+        }
+        .sidebar h3 {
+            color: #86b7ff;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            margin: 24px 0 12px;
+            letter-spacing: 0.5px;
+        }
+        .sidebar h3:first-child {
+            margin-top: 0;
+        }
+        .sidebar ul {
+            list-style: none;
+            margin: 0;
+        }
+        .sidebar li {
+            margin: 6px 0;
+        }
+        .sidebar a {
+            color: #d1dce9;
+            text-decoration: none;
+            font-size: 0.95em;
+            display: block;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+        .sidebar a:hover {
+            background: #1b2338;
+            color: #86b7ff;
+        }
+        .content {
+            margin-left: 320px;
+            background: #141b2d;
+            border-radius: 16px;
+            padding: 48px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            color: #86b7ff;
+            font-size: 2.5em;
+            margin-bottom: 12px;
+            border-bottom: 3px solid #26314f;
+            padding-bottom: 16px;
+        }
+        h2 {
+            color: #86b7ff;
+            font-size: 1.8em;
+            margin: 48px 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #26314f;
+            scroll-margin-top: 80px;
+        }
+        h2:first-of-type {
+            margin-top: 0;
+        }
+        h3 {
+            color: #a8c9ff;
+            font-size: 1.3em;
+            margin: 32px 0 12px;
+            scroll-margin-top: 80px;
+        }
+        h4 {
+            color: #c5d9ff;
+            font-size: 1.1em;
+            margin: 24px 0 10px;
+        }
+        .subtitle {
+            color: #9db3d4;
+            font-size: 1.1em;
+            margin-bottom: 32px;
+        }
+        p {
+            margin: 12px 0;
+            color: #d1dce9;
+        }
+        ul, ol {
+            margin: 12px 0 12px 24px;
+            color: #d1dce9;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .info-box {
+            background: #1b2338;
+            border-left: 4px solid #f59e0b;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .success-box {
+            background: #1b2338;
+            border-left: 4px solid #10b981;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .warning-box {
+            background: #1b2338;
+            border-left: 4px solid #ef4444;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #1b2338;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th {
+            background: #26314f;
+            color: #86b7ff;
+            padding: 14px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #26314f;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        code {
+            background: #1b2338;
+            color: #86b7ff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: "SF Mono", Monaco, "Courier New", monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1b2338;
+            border: 1px solid #26314f;
+            border-radius: 8px;
+            padding: 16px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+            color: #d1dce9;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 0 4px;
+        }
+        .badge-green { background: #285943; color: #86efac; }
+        .badge-yellow { background: #7a5a13; color: #fcd34d; }
+        .badge-red { background: #7f1d1d; color: #fca5a5; }
+        hr {
+            border: none;
+            border-top: 2px solid #26314f;
+            margin: 32px 0;
+        }
+        a {
+            color: #86b7ff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .print-button {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+        .print-button:hover {
+            background: #357abd;
+        }
+        @media print {
+            body { background: white; color: black; }
+            .nav, .sidebar { display: none; }
+            .content { margin-left: 0; background: white; box-shadow: none; }
+            .print-button { display: none; }
+            h1, h2, h3 { color: #1a365d; }
+        }
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .content { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="nav-container">
+            <div class="nav-title">Knight COI Manager</div>
+            <div class="nav-links">
+                <a href="quick-start.html">Quick Start</a>
+                <a href="user-guide.html">User Guide</a>
+                <a href="http://localhost:3030" target="_blank">Open Demo</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <h3>Contents</h3>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#accessing">Accessing the System</a></li>
+            <li><a href="#dashboard">Main Dashboard</a></li>
+        </ul>
+        <h3>Daily Workflow</h3>
+        <ul>
+            <li><a href="#review-queue">Check Review Queue</a></li>
+            <li><a href="#expiring">Monitor Expiring COIs</a></li>
+            <li><a href="#roster">Keep Roster Current</a></li>
+        </ul>
+        <h3>Understanding</h3>
+        <ul>
+            <li><a href="#validity">Certificate Validity</a></li>
+            <li><a href="#scenarios">Common Scenarios</a></li>
+            <li><a href="#tips">Tips for Success</a></li>
+        </ul>
+        <h3>Reference</h3>
+        <ul>
+            <li><a href="#roster-ref">Roster Import</a></li>
+            <li><a href="#help">Getting Help</a></li>
+            <li><a href="#glossary">Glossary</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <h1>Knight COI Manager - User Guide</h1>
+            <p class="subtitle"><strong>For:</strong> Knight Real Estate property management team &nbsp;|&nbsp; <strong>Version:</strong> MVP Demo (March 2026)</p>
+
+            <button class="print-button" onclick="window.print()">🖨️ Print This Guide</button>
+
+            <hr>
+
+            <h2 id="overview">What This Does</h2>
+            <p>The COI Manager automatically processes incoming Certificate of Insurance (COI) emails:</p>
+            <ol>
+                <li><strong>Reads</strong> COI emails and attachments from your mailbox</li>
+                <li><strong>Extracts</strong> key information (insured name, expiration date, coverage amounts, etc.)</li>
+                <li><strong>Matches</strong> certificates to your tenants and vendors</li>
+                <li><strong>Tracks</strong> expiration dates</li>
+                <li><strong>Sends</strong> automatic reminder emails at 60, 30, 7, and 1 days before expiration</li>
+                <li><strong>Alerts</strong> you when something needs your attention</li>
+            </ol>
+
+            <h2 id="accessing">Accessing the System</h2>
+            <p><strong>Local Demo:</strong> <a href="http://localhost:3030" target="_blank">http://localhost:3030</a></p>
+            <p><em>(Production URL will be provided when deployed)</em></p>
+
+            <h2 id="dashboard">Main Dashboard</h2>
+            <p>When you open the system, you'll see:</p>
+
+            <h3>Overview Stats (Top)</h3>
+            <ul>
+                <li><strong>Entities:</strong> Total tenants and vendors being tracked</li>
+                <li><strong>Certificates:</strong> Active COIs on file</li>
+                <li><strong>Needs Review:</strong> Items requiring your attention</li>
+                <li><strong>Validity Issues:</strong> Certificates with missing or incorrect information</li>
+            </ul>
+
+            <h3>Review Queue (Middle)</h3>
+            <p>This is your action center. Items appear here when:</p>
+            <ul>
+                <li>A COI arrives for an unknown tenant/vendor</li>
+                <li>A certificate is missing required information</li>
+                <li>Something needs manual verification</li>
+            </ul>
+
+            <h3>Import Tools (Bottom)</h3>
+            <ul>
+                <li><strong>Roster Import:</strong> Add/update tenants and vendors in bulk</li>
+                <li><strong>Inbox Import:</strong> Manually import COI emails for testing</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="daily-workflow">Daily Workflow</h2>
+
+            <h3 id="review-queue">1. Check the Review Queue</h3>
+            
+            <p><strong>When an item appears:</strong></p>
+            <ol>
+                <li>Click to expand the details</li>
+                <li>Review the extracted certificate information:
+                    <ul>
+                        <li>Insured name</li>
+                        <li>Certificate holder (should be Knight Real Estate or your property)</li>
+                        <li>Expiration date</li>
+                        <li>Coverage amounts</li>
+                        <li>Policy number</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <p><strong>Three actions you can take:</strong></p>
+
+            <h4>✅ Accept (when everything looks correct)</h4>
+            <ul>
+                <li>The system matched the certificate to the right tenant/vendor</li>
+                <li>Certificate holder is correct</li>
+                <li>Expiration date is reasonable</li>
+                <li>Click "Accept" → Certificate becomes active, reminders are scheduled</li>
+            </ul>
+
+            <h4>👤 Assign to Entity (when the match is wrong or missing)</h4>
+            <ul>
+                <li>The system couldn't match automatically, OR</li>
+                <li>It matched to the wrong tenant/vendor</li>
+                <li>Select the correct entity from the dropdown</li>
+                <li>Click "Assign + Accept" → Certificate is linked to that entity</li>
+            </ul>
+
+            <h4>❌ Reject (when the certificate is invalid)</h4>
+            <ul>
+                <li>Wrong certificate holder (not your property)</li>
+                <li>Duplicate email</li>
+                <li>Wrong file attached</li>
+                <li>Select a rejection reason and click "Reject"</li>
+            </ul>
+
+            <h3 id="expiring">2. Monitor Expiring Certificates</h3>
+            <p>The system automatically sends reminder emails:</p>
+            <ul>
+                <li><strong>60 days</strong> before expiration: "Please provide updated COI"</li>
+                <li><strong>30 days</strong> before expiration: Follow-up reminder</li>
+                <li><strong>7 days</strong> before expiration: Urgent reminder</li>
+                <li><strong>1 day</strong> before expiration: Final notice</li>
+            </ul>
+
+            <p><strong>When a replacement certificate arrives:</strong></p>
+            <ul>
+                <li>The system detects it's a renewal (same policy/entity, newer expiration)</li>
+                <li>Cancels old reminders</li>
+                <li>Schedules new reminders for the updated expiration</li>
+            </ul>
+
+            <h3 id="roster">3. Keep Your Roster Current</h3>
+            
+            <h4>Add new tenants or vendors:</h4>
+            <p><strong>1. Prepare a CSV file with these columns:</strong></p>
+            <ul>
+                <li><code>name</code> (required) - Company name</li>
+                <li><code>entity_type</code> (tenant or vendor)</li>
+                <li><code>property_code</code> (optional) - Which building/property</li>
+                <li><code>primary_email</code> (optional) - Main contact email</li>
+                <li><code>alternate_emails</code> (optional) - Additional emails, semicolon-separated</li>
+                <li><code>external_id</code> (optional) - Your internal ID/code</li>
+                <li><code>notes</code> (optional)</li>
+            </ul>
+
+            <p><strong>Example CSV:</strong></p>
+            <pre><code>name,entity_type,property_code,primary_email,alternate_emails,external_id,notes
+Aurora Wealth Partners,tenant,WESTGATE,certs@aurorawealth.com,ops@aurorawealth.com,,Suite 200
+River City Janitorial,vendor,,dispatch@rivercity.com,,,Building-wide contract</code></pre>
+
+            <p><strong>2. Import it:</strong></p>
+            <ol>
+                <li>Go to <strong>Roster Import</strong> section</li>
+                <li>Click "Choose File" and select your CSV</li>
+                <li>Click "Import Roster"</li>
+                <li>Review the summary (created/updated/errors)</li>
+            </ol>
+
+            <p><strong>The system will:</strong></p>
+            <ul>
+                <li>Create new entities if the name doesn't match anything existing</li>
+                <li>Update existing entities if it finds a match (by name or external_id)</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="validity">Understanding Certificate Validity</h2>
+            <p>Each certificate is checked for:</p>
+
+            <h3>✅ Acceptable <span class="badge badge-green">green</span></h3>
+            <ul>
+                <li>Has insured name</li>
+                <li>Has certificate holder</li>
+                <li>Has expiration date</li>
+                <li>Expiration date is in the future</li>
+            </ul>
+
+            <h3>⚠️ Warnings <span class="badge badge-yellow">yellow</span></h3>
+            <p>These won't block acceptance, but you should verify:</p>
+            <ul>
+                <li>Missing carrier information</li>
+                <li>Missing coverage details</li>
+                <li>Certificate holder name doesn't exactly match expected</li>
+            </ul>
+
+            <h3>🛑 Blocked <span class="badge badge-red">red</span></h3>
+            <p>These MUST be fixed before acceptance:</p>
+            <ul>
+                <li>Missing insured name</li>
+                <li>Missing expiration date</li>
+                <li>Expiration date is in the past</li>
+                <li>Expiration date is before effective date</li>
+                <li>No matching tenant/vendor (use "Assign to Entity")</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="scenarios">Common Scenarios</h2>
+
+            <h3>Scenario 1: New Tenant Moves In</h3>
+            <ol>
+                <li>Add them to the roster via CSV import</li>
+                <li>Request COI from tenant</li>
+                <li>When COI email arrives, system processes it automatically</li>
+                <li>Check review queue, accept if everything looks good</li>
+            </ol>
+
+            <h3>Scenario 2: Unknown Company Sends COI</h3>
+            <ol>
+                <li>COI appears in review queue with reason "no_entity_match"</li>
+                <li><strong>Option A:</strong> Add them to roster first, then accept</li>
+                <li><strong>Option B:</strong> Use "Assign to Entity" dropdown to manually match</li>
+            </ol>
+
+            <h3>Scenario 3: Certificate About to Expire</h3>
+            <ol>
+                <li>System sends automatic reminders (60/30/7/1 days)</li>
+                <li>Tenant/vendor sends updated COI</li>
+                <li>System detects it's a renewal</li>
+                <li>Old certificate is superseded, new reminders are scheduled</li>
+                <li>You may need to review/accept if anything looks unusual</li>
+            </ol>
+
+            <h3>Scenario 4: Wrong Certificate Arrives</h3>
+            <ol>
+                <li>Certificate holder is a different property</li>
+                <li>Or it's for a different entity entirely</li>
+                <li>Click "Reject" → Select reason → Submit</li>
+                <li>Contact sender to request correct certificate</li>
+            </ol>
+
+            <hr>
+
+            <h2 id="tips">Tips for Success</h2>
+
+            <h3>Best Practices</h3>
+            <ul>
+                <li><strong>Import your full tenant/vendor roster first</strong> before processing COIs</li>
+                <li><strong>Check the review queue daily</strong> (or set up email notifications when available)</li>
+                <li><strong>Use external_id</strong> in your roster for easy matching with your property management system</li>
+                <li><strong>Keep email addresses current</strong> so reminders reach the right people</li>
+            </ul>
+
+            <h3>When to Manually Assign</h3>
+            <ul>
+                <li>Tenant name on COI doesn't exactly match your records (e.g., "ABC Corp" vs "ABC Corporation")</li>
+                <li>COI is for a parent company but should be linked to a subsidiary in your roster</li>
+                <li>Vendor changes names but it's the same company</li>
+            </ul>
+
+            <h3>When to Reject</h3>
+            <ul>
+                <li>Certificate holder is not Knight Real Estate or one of your properties</li>
+                <li>COI is a duplicate (already on file)</li>
+                <li>Certificate is expired before you even receive it</li>
+                <li>Wrong document attached (invoice, proposal, etc. instead of COI)</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="roster-ref">Roster Import Reference</h2>
+
+            <h3>Required Fields</h3>
+            <ul>
+                <li><code>name</code> - Must be unique per entity type</li>
+            </ul>
+
+            <h3>Valid Entity Types</h3>
+            <ul>
+                <li><code>tenant</code> (default if blank)</li>
+                <li><code>vendor</code></li>
+            </ul>
+
+            <h3>Valid Property Codes</h3>
+            <p>Currently configured properties:</p>
+            <ul>
+                <li><code>RIVERSOUTH</code> - Riversouth Building</li>
+                <li><code>WESTGATE</code> - Westgate Office Center</li>
+            </ul>
+            <p><em>(Contact support to add new properties)</em></p>
+
+            <h3>Email Format</h3>
+            <ul>
+                <li>Single email: <code>john@example.com</code></li>
+                <li>Multiple emails: <code>john@example.com;jane@example.com</code></li>
+            </ul>
+
+            <hr>
+
+            <h2 id="help">Getting Help</h2>
+
+            <h3>Current Status</h3>
+            <p>This is the <strong>MVP demo version</strong> running locally. Features being developed:</p>
+            <ul>
+                <li>Live mailbox sync (automatic COI ingestion)</li>
+                <li>Email notification system for expiring certificates</li>
+                <li>Advanced reporting and export</li>
+                <li>Multi-user access controls</li>
+            </ul>
+
+            <h3>Support Contact</h3>
+            <p>For questions, issues, or feature requests during pilot:</p>
+            <ul>
+                <li>Nate Simpson (project sponsor)</li>
+                <li>Larry (AI assistant via OpenClaw)</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="glossary">Glossary</h2>
+
+            <table>
+                <tr>
+                    <th>Term</th>
+                    <th>Definition</th>
+                </tr>
+                <tr>
+                    <td><strong>COI</strong></td>
+                    <td>Certificate of Insurance (also called "Evidence of Coverage")</td>
+                </tr>
+                <tr>
+                    <td><strong>ACORD</strong></td>
+                    <td>Standard insurance form format (ACORD 25 is most common for liability certificates)</td>
+                </tr>
+                <tr>
+                    <td><strong>Certificate Holder</strong></td>
+                    <td>The party protected by the insurance (should be Knight Real Estate or your property)</td>
+                </tr>
+                <tr>
+                    <td><strong>Insured</strong></td>
+                    <td>The party who holds the insurance policy (your tenant or vendor)</td>
+                </tr>
+                <tr>
+                    <td><strong>Additional Insured</strong></td>
+                    <td>When the certificate holder is explicitly named on the policy (preferred)</td>
+                </tr>
+                <tr>
+                    <td><strong>Occurrence Policy</strong></td>
+                    <td>Coverage applies to incidents that occur during the policy period (most common)</td>
+                </tr>
+                <tr>
+                    <td><strong>Claims-Made Policy</strong></td>
+                    <td>Coverage applies to claims filed during the policy period (less common, requires tail coverage)</td>
+                </tr>
+                <tr>
+                    <td><strong>Aggregate</strong></td>
+                    <td>Total maximum the policy will pay for all claims during the policy period</td>
+                </tr>
+                <tr>
+                    <td><strong>Per Occurrence</strong></td>
+                    <td>Maximum the policy will pay for a single incident</td>
+                </tr>
+            </table>
+
+            <hr>
+
+            <p style="text-align: center; color: #9db3d4; margin-top: 48px;">
+                <em>Last updated: March 27, 2026</em>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

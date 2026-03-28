@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knight COI Manager - Quick Start Guide</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #0b1020;
+            color: #e8ecf3;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #141b2d;
+            border-radius: 16px;
+            padding: 48px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            color: #86b7ff;
+            font-size: 2.5em;
+            margin-bottom: 12px;
+            border-bottom: 3px solid #26314f;
+            padding-bottom: 16px;
+        }
+        h2 {
+            color: #86b7ff;
+            font-size: 1.8em;
+            margin: 40px 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #26314f;
+        }
+        h3 {
+            color: #a8c9ff;
+            font-size: 1.3em;
+            margin: 24px 0 12px;
+        }
+        h4 {
+            color: #c5d9ff;
+            font-size: 1.1em;
+            margin: 20px 0 10px;
+        }
+        .subtitle {
+            color: #9db3d4;
+            font-size: 1.1em;
+            margin-bottom: 32px;
+        }
+        p {
+            margin: 12px 0;
+            color: #d1dce9;
+        }
+        ul, ol {
+            margin: 12px 0 12px 24px;
+            color: #d1dce9;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .checklist {
+            background: #1b2338;
+            border-left: 4px solid #4a90e2;
+            padding: 16px 20px;
+            margin: 16px 0;
+            border-radius: 8px;
+        }
+        .checklist li {
+            list-style: none;
+            padding: 6px 0;
+        }
+        .checklist li::before {
+            content: "☐ ";
+            color: #4a90e2;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .info-box {
+            background: #1b2338;
+            border-left: 4px solid #f59e0b;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .success-box {
+            background: #1b2338;
+            border-left: 4px solid #10b981;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #1b2338;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th {
+            background: #26314f;
+            color: #86b7ff;
+            padding: 14px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #26314f;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        code {
+            background: #1b2338;
+            color: #86b7ff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: "SF Mono", Monaco, "Courier New", monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1b2338;
+            border: 1px solid #26314f;
+            border-radius: 8px;
+            padding: 16px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+            color: #d1dce9;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 0 4px;
+        }
+        .badge-green { background: #285943; color: #86efac; }
+        .badge-yellow { background: #7a5a13; color: #fcd34d; }
+        .badge-red { background: #7f1d1d; color: #fca5a5; }
+        .step-number {
+            display: inline-block;
+            background: #4a90e2;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #26314f;
+            margin: 32px 0;
+        }
+        a {
+            color: #86b7ff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .print-button {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+        .print-button:hover {
+            background: #357abd;
+        }
+        @media print {
+            body { background: white; color: black; }
+            .container { background: white; box-shadow: none; }
+            .print-button { display: none; }
+            h1, h2, h3 { color: #1a365d; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Knight COI Manager - Quick Start Checklist</h1>
+        <p class="subtitle"><strong>For:</strong> Meredith's first session &nbsp;|&nbsp; <strong>Time:</strong> 30-45 minutes &nbsp;|&nbsp; <strong>Goal:</strong> Process your first real COI</p>
+
+        <button class="print-button" onclick="window.print()">🖨️ Print This Guide</button>
+
+        <hr>
+
+        <h2>Before You Start</h2>
+        <div class="checklist">
+            <ul>
+                <li>Access to <a href="http://localhost:3030" target="_blank">http://localhost:3030</a> (Nate will start the server)</li>
+                <li>A list of current tenants/vendors at your properties</li>
+                <li>2-3 recent COI emails you've received</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <h2>Session 1: Getting Started (30 min)</h2>
+
+        <h3><span class="step-number">1</span>See the Demo Data (5 min)</h3>
+        <p>Open <a href="http://localhost:3030" target="_blank">http://localhost:3030</a> in your browser.</p>
+        
+        <div class="checklist">
+            <p><strong>Explore what's there:</strong></p>
+            <ul>
+                <li>Look at the <strong>Overview Stats</strong> - see entities, certificates, review queue count</li>
+                <li>Scroll to <strong>Review Queue</strong> - see sample items needing review</li>
+                <li>Notice the <strong>validity badges</strong> <span class="badge badge-green">green = good</span> <span class="badge badge-yellow">yellow = warnings</span> <span class="badge badge-red">red = blocked</span></li>
+            </ul>
+        </div>
+
+        <div class="success-box">
+            <strong>💡 Try this:</strong> Click "Show Details" on a review item to see extracted certificate data
+        </div>
+
+        <h3><span class="step-number">2</span>Import Your Roster (10 min)</h3>
+        <p><strong>Create a simple CSV file with 3-5 entities:</strong></p>
+
+        <pre><code>name,entity_type,property_code,primary_email,notes
+Your Tenant Name,tenant,RIVERSOUTH,contact@tenant.com,Suite 200
+Another Company,vendor,,vendor@example.com,HVAC contractor</code></pre>
+
+        <div class="checklist">
+            <p><strong>Import it:</strong></p>
+            <ul>
+                <li>Scroll to <strong>Roster Import</strong> section</li>
+                <li>Click "Choose File" and select your CSV</li>
+                <li>Click "Import Roster"</li>
+                <li>Check the summary (should show "created: 2" or similar)</li>
+                <li>Refresh the page - your entities should appear in the stats</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <strong>⚠️ Troubleshooting:</strong>
+            <ul>
+                <li>If you get errors, check that the CSV has a header row</li>
+                <li>Entity names should be unique</li>
+                <li>Entity type must be "tenant" or "vendor" (or leave blank for tenant)</li>
+            </ul>
+        </div>
+
+        <h3><span class="step-number">3</span>Process a Real COI (15 min)</h3>
+        
+        <h4>Step 1: Prepare Your COI</h4>
+        <p>Find a recent COI email you received and ask Nate to help create a JSON file with the certificate details.</p>
+
+        <h4>Step 2: Import It</h4>
+        <div class="checklist">
+            <ul>
+                <li>Scroll to <strong>Inbox Import</strong> section</li>
+                <li>Paste the JSON or use "Import from Provider JSON"</li>
+                <li>Click "Import Message"</li>
+            </ul>
+        </div>
+
+        <h4>Step 3: Review It</h4>
+        <div class="checklist">
+            <ul>
+                <li>Refresh the page</li>
+                <li>Check the <strong>Review Queue</strong> - your COI should appear</li>
+                <li>Click "Show Details" to see extracted data</li>
+                <li>Verify the extracted information matches the actual certificate</li>
+            </ul>
+        </div>
+
+        <h4>Step 4: Take Action</h4>
+        <table>
+            <tr>
+                <th>If...</th>
+                <th>Then...</th>
+            </tr>
+            <tr>
+                <td>Entity match looks correct</td>
+                <td>Click <strong>"Accept"</strong></td>
+            </tr>
+            <tr>
+                <td>No match or wrong match</td>
+                <td>Use <strong>"Assign to Entity"</strong> dropdown → Select correct entity → Click "Assign + Accept"</td>
+            </tr>
+            <tr>
+                <td>Something's wrong</td>
+                <td>Click <strong>"Reject"</strong> → Choose reason → Submit</td>
+            </tr>
+        </table>
+
+        <h4>Step 5: Confirm Success</h4>
+        <div class="checklist">
+            <ul>
+                <li>Item should disappear from Review Queue</li>
+                <li>Check Overview Stats - certificate count should increase by 1</li>
+                <li>In a real system, reminder emails would now be scheduled</li>
+            </ul>
+        </div>
+
+        <h3><span class="step-number">4</span>Understand Validity Checks (5 min)</h3>
+        <p>Look at the <strong>validity display</strong> for certificates in the review queue:</p>
+
+        <table>
+            <tr>
+                <th>Badge</th>
+                <th>Meaning</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td><span class="badge badge-green">Acceptable</span></td>
+                <td>All required fields present</td>
+                <td>Accept if entity match is correct</td>
+            </tr>
+            <tr>
+                <td><span class="badge badge-yellow">Has Warnings</span></td>
+                <td>Missing optional info (carrier, coverage details)</td>
+                <td>Accept if required fields OK, verify manually</td>
+            </tr>
+            <tr>
+                <td><span class="badge badge-red">Blocked</span></td>
+                <td>Missing required data or no entity match</td>
+                <td>Fix data or assign entity before accepting</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <h2>What You Just Learned</h2>
+        <div class="success-box">
+            <ul style="list-style: none; margin-left: 0;">
+                <li>✅ How to view the dashboard and understand stats</li>
+                <li>✅ How to import your tenant/vendor roster</li>
+                <li>✅ How to process an incoming COI</li>
+                <li>✅ How to accept, assign, or reject a certificate</li>
+                <li>✅ What validity checks mean</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <h2>Quick Reference</h2>
+
+        <h3>Common Actions</h3>
+        <table>
+            <tr>
+                <th>What You Want</th>
+                <th>Where to Go</th>
+                <th>What to Do</th>
+            </tr>
+            <tr>
+                <td>Add new tenant/vendor</td>
+                <td>Roster Import section</td>
+                <td>Prepare CSV → Choose File → Import</td>
+            </tr>
+            <tr>
+                <td>Process new COI</td>
+                <td>Review Queue</td>
+                <td>Show Details → Verify → Accept/Assign/Reject</td>
+            </tr>
+            <tr>
+                <td>Check certificate details</td>
+                <td>Click on review item</td>
+                <td>View extracted fields and validity status</td>
+            </tr>
+        </table>
+
+        <h3>Rejection Reasons</h3>
+        <ul>
+            <li><strong>Wrong certificate holder</strong> - Not for your property</li>
+            <li><strong>Duplicate</strong> - Already have this one</li>
+            <li><strong>Expired</strong> - Certificate expired before you received it</li>
+            <li><strong>Wrong document</strong> - Not a COI (invoice, quote, etc.)</li>
+            <li><strong>Incomplete</strong> - Missing too much critical information</li>
+        </ul>
+
+        <hr>
+
+        <h2>Success Criteria for Pilot Week</h2>
+        <div class="success-box">
+            <p>After your first week, you should be able to:</p>
+            <ul>
+                <li>✅ Import/update your roster without help</li>
+                <li>✅ Process 5-10 COIs per day efficiently</li>
+                <li>✅ Understand when to accept vs assign vs reject</li>
+                <li>✅ Know what validity warnings mean and when to worry</li>
+                <li>✅ Have confidence in the system's entity matching</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <h2>Getting Help</h2>
+        <div class="info-box">
+            <p><strong>Questions about:</strong></p>
+            <ul>
+                <li><strong>How the system works</strong> → Check <code>USER_GUIDE.md</code></li>
+                <li><strong>Import errors or technical issues</strong> → Contact Nate</li>
+                <li><strong>Feature requests or improvements</strong> → Write them down for feedback session</li>
+            </ul>
+        </div>
+
+        <table>
+            <tr>
+                <th>Problem</th>
+                <th>Solution</th>
+            </tr>
+            <tr>
+                <td>CSV import fails</td>
+                <td>Make sure first row is the header (name,entity_type,etc.)</td>
+            </tr>
+            <tr>
+                <td>Entity won't match</td>
+                <td>Check spelling - "ABC Corp" ≠ "ABC Corporation". Use Assign to Entity.</td>
+            </tr>
+            <tr>
+                <td>Can't accept certificate</td>
+                <td>Check validity badge - red = fix blocking issues first</td>
+            </tr>
+            <tr>
+                <td>Lost demo data</td>
+                <td>Nate can reset the database if needed</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <p style="text-align: center; color: #9db3d4; margin-top: 48px;">
+            <strong>Ready? Let's process your first COI!</strong><br>
+            <em>Created: March 27, 2026 | For: Knight Real Estate pilot with Meredith</em>
+        </p>
+    </div>
+</body>
+</html>

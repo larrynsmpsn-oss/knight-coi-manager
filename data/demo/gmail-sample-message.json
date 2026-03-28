@@ -1,0 +1,16 @@
+{
+  "id": "gmail-sample-1",
+  "threadId": "gmail-thread-1",
+  "from": "Knight Broker <renewals@carrier.com>",
+  "subject": "Updated Apex certificate",
+  "snippet": "Attached is the updated COI for Apex Mechanical Services.",
+  "internalDate": "2026-03-24T15:30:00Z",
+  "attachments": [
+    {
+      "id": "gmail-sample-att-1",
+      "filename": "apex-coi.pdf",
+      "contentType": "application/pdf",
+      "text": "CERTIFICATE OF LIABILITY INSURANCE\nINSURED: Apex Mechanical Services\nCERTIFICATE HOLDER: Knight Real Estate\nPOLICY NUMBER: APEX-77\nEXPIRATION DATE: 09/30/2027"
+    }
+  ]
+}

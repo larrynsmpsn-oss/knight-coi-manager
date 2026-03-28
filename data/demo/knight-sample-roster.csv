@@ -1,0 +1,3 @@
+name,entity_type,property_code,primary_email,alternate_emails,external_id,notes
+Aurora Wealth Partners,tenant,WESTGATE,certs@aurorawealth.com,"ops@aurorawealth.com;broker@aurorawealth.com",,Existing tenant sample for import testing
+River City Janitorial,vendor,,dispatch@rivercityjanitorial.com,,V-100,New vendor sample for import testing

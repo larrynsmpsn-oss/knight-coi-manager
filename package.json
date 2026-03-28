@@ -1,0 +1,24 @@
+{
+  "name": "knight-coi-manager",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "demo": "node src/demo.js",
+    "dev": "node src/server.js",
+    "export:postgres-seed": "node src/cli/export-postgres-seed.js",
+    "export:apple-mail-json": "node src/cli/export-apple-mail-json.js",
+    "import:apple-mail-demo": "node src/cli/import-apple-mail-demo.js",
+    "import:provider-demo": "node src/cli/import-provider-json-demo.js",
+    "import:provider-dir-demo": "node src/cli/import-provider-dir-demo.js",
+    "test": "node --test",
+    "test:watch": "node --test --watch"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "pg": "^8.11.0"
+  }
+}

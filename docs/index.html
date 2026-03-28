@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knight COI Manager - Documentation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #0b1020;
+            color: #e8ecf3;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+        }
+        h1 {
+            color: #86b7ff;
+            font-size: 3em;
+            margin-bottom: 16px;
+        }
+        .subtitle {
+            color: #9db3d4;
+            font-size: 1.3em;
+            margin-bottom: 48px;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 48px 0;
+        }
+        .card {
+            background: #141b2d;
+            border: 2px solid #26314f;
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: #4a90e2;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(74, 144, 226, 0.2);
+        }
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 16px;
+        }
+        .card h2 {
+            color: #86b7ff;
+            font-size: 1.5em;
+            margin-bottom: 12px;
+        }
+        .card p {
+            color: #d1dce9;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .card a {
+            display: inline-block;
+            background: #4a90e2;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .card a:hover {
+            background: #357abd;
+        }
+        .demo-link {
+            text-align: center;
+            margin: 48px 0;
+        }
+        .demo-link a {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2em;
+            transition: background 0.3s;
+        }
+        .demo-link a:hover {
+            background: #059669;
+        }
+        .features {
+            background: #141b2d;
+            border-radius: 16px;
+            padding: 48px;
+            margin: 48px 0;
+        }
+        .features h2 {
+            color: #86b7ff;
+            font-size: 2em;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .features ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+        .features li {
+            color: #d1dce9;
+            padding: 12px 0;
+        }
+        .features li::before {
+            content: "✓ ";
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        footer {
+            text-align: center;
+            color: #9db3d4;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 2px solid #26314f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>🦞 Knight COI Manager</h1>
+            <p class="subtitle">Certificate of Insurance Management System</p>
+        </div>
+
+        <div class="demo-link">
+            <a href="http://localhost:3030" target="_blank">🚀 Open Live Demo</a>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h2>Quick Start</h2>
+                <p>New to the system? Start here! A 30-minute guided checklist to process your first COI.</p>
+                <a href="quick-start.html">Start Guide →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📚</div>
+                <h2>User Guide</h2>
+                <p>Complete operator manual covering daily workflows, scenarios, and best practices.</p>
+                <a href="user-guide.html">Read Guide →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <h2>Live Demo</h2>
+                <p>Try the system hands-on with sample data and real certificate processing.</p>
+                <a href="http://localhost:3030" target="_blank">Open Demo →</a>
+            </div>
+        </div>
+
+        <div class="features">
+            <h2>What This System Does</h2>
+            <ul>
+                <li>Automatically reads COI emails from your mailbox</li>
+                <li>Extracts key fields (insured, holder, dates, coverage)</li>
+                <li>Matches certificates to tenants and vendors</li>
+                <li>Tracks expiration dates automatically</li>
+                <li>Sends reminder emails at 60/30/7/1 days before expiration</li>
+                <li>Flags issues for your review</li>
+                <li>Detects renewals and cancels old reminders</li>
+                <li>Stores certificates in Postgres database</li>
+                <li>Provides web dashboard for review and approval</li>
+                <li>Supports bulk roster import via CSV</li>
+            </ul>
+        </div>
+
+        <div class="features">
+            <h2>For Meredith's Team</h2>
+            <p style="color: #d1dce9; text-align: center; margin-bottom: 24px;">
+                This pilot system is designed for Knight Real Estate's property management workflow.
+            </p>
+            <ul>
+                <li>Import your current tenant/vendor roster</li>
+                <li>Process incoming COI emails</li>
+                <li>Accept, assign, or reject certificates</li>
+                <li>Monitor expiring certificates</li>
+                <li>Stay compliant with lease requirements</li>
+                <li>Reduce manual tracking overhead</li>
+            </ul>
+        </div>
+
+        <footer>
+            <p><strong>Version:</strong> MVP Demo (March 2026)</p>
+            <p><strong>For:</strong> Knight Real Estate pilot</p>
+            <p style="margin-top: 20px;"><em>Questions? Contact Nate Simpson or Larry (AI assistant)</em></p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+BEGIN;
+INSERT INTO clients (id, name, slug, timezone) VALUES ('860ef9e8-4bcc-f8b9-16d9-d181f3b9e00c', 'Knight Real Estate', 'knight-real-estate', 'America/Chicago');
+INSERT INTO mailboxes (id, client_id, label, provider, address) VALUES ('4744df3a-7342-53dc-6d87-a124c29d3960', '860ef9e8-4bcc-f8b9-16d9-d181f3b9e00c', 'Demo Mailbox', 'demo', 'knight-real-estate@example.test');
+INSERT INTO entity_types (id, client_id, key, label) VALUES ('9243ff5e-cc51-158b-3ed8-f8b5714cfbf7', '860ef9e8-4bcc-f8b9-16d9-d181f3b9e00c', 'tenant', 'Tenant');
+INSERT INTO entity_types (id, client_id, key, label) VALUES ('7136fe70-0d32-ca17-3e73-81d169b3f961', '860ef9e8-4bcc-f8b9-16d9-d181f3b9e00c', 'vendor', 'Vendor');
+INSERT INTO properties (id, client_id, name, code) VALUES ('9a7540a8-ac1d-3424-ec14-b1904a5a5d71', '860ef9e8-4bcc-f8b9-16d9-d181f3b9e00c', 'Riversouth Building', 'RIVERSOUTH');
+INSERT INTO properties (id, client_id, name, code) VALUES ('82c83cb8-a295-d58d-9140-3fb826f3612a', '860ef9e8-4bcc-f8b9-16d9-d181f3b9e00c', 'Westgate Office Center', 'WESTGATE');
+INSERT INTO entities (id, client_id, entity_type_id, property_id, external_id, name, normalized_name, status, primary_email, alternate_emails, metadata_json) VALUES ('28b97e05-ef31-93f5-525f-151ff2e29a88', '860ef9e8-4bcc-f8b9-16d9-d181f3b9e00c', '9243ff5e-cc51-158b-3ed8-f8b5714cfbf7', '9a7540a8-ac1d-3424-ec14-b1904a5a5d71', NULL, 'Lone Star Therapy, LLC', 'lone star therapy, llc', 'active', 'ops@lonestartherapy.com', '["broker@lonestarinsurance.com"]'::jsonb, '{}'::jsonb);
+INSERT INTO entities (id, client_id, entity_type_id, property_id, external_id, name, normalized_name, status, primary_email, alternate_emails, metadata_json) VALUES ('b0e2a51c-5edf-9db0-df13-7b22d469f622', '860ef9e8-4bcc-f8b9-16d9-d181f3b9e00c', '9243ff5e-cc51-158b-3ed8-f8b5714cfbf7', '82c83cb8-a295-d58d-9140-3fb826f3612a', NULL, 'Aurora Wealth Partners', 'aurora wealth partners', 'active', 'office@aurorawealth.com', '[]'::jsonb, '{}'::jsonb);
+INSERT INTO entities (id, client_id, entity_type_id, property_id, external_id, name, normalized_name, status, primary_email, alternate_emails, metadata_json) VALUES ('be9fdf87-f710-86f1-621f-316b0027ded4', '860ef9e8-4bcc-f8b9-16d9-d181f3b9e00c', '7136fe70-0d32-ca17-3e73-81d169b3f961', NULL, NULL, 'Apex Mechanical Services', 'apex mechanical services', 'active', 'service@apexmechanical.com', '["certs@apexmechanical.com"]'::jsonb, '{}'::jsonb);
+INSERT INTO inbound_messages (id, client_id, mailbox_id, provider_message_id, thread_key, from_email, from_name, subject, body_text, received_at, processing_status) VALUES ('b01b9745-4533-0472-e531-424f637af23f', '860ef9e8-4bcc-f8b9-16d9-d181f3b9e00c', '4744df3a-7342-53dc-6d87-a124c29d3960', 'msg-1', NULL, 'broker@lonestarinsurance.com', 'Broker Team', 'Updated COI for Lone Star Therapy', 'Attached is the updated certificate for Lone Star Therapy. Please replace the prior version on file.', '2026-10-20T15:30:00Z', 'processed');
+INSERT INTO attachments (id, client_id, inbound_message_id, filename, content_type, byte_size, storage_key, sha256, is_likely_certificate, extracted_text, extraction_json) VALUES ('c1f06443-08da-4ffd-6cb3-4072aff463a5', '860ef9e8-4bcc-f8b9-16d9-d181f3b9e00c', 'b01b9745-4533-0472-e531-424f637af23f', 'LoneStarTherapy-COI.pdf', 'application/pdf', NULL, 'demo/LoneStarTherapy-COI.pdf', NULL, TRUE, 'CERTIFICATE OF LIABILITY INSURANCE
+INSURED: Lone Star Therapy, LLC
+CERTIFICATE HOLDER: Knight Real Estate
+PRODUCER: Hill Country Insurance
+POLICY NUMBER: GL-1001
+EFFECTIVE DATE: 01/01/2026
+EXPIRATION DATE: 12/31/2026', '{}'::jsonb);
+INSERT INTO inbound_messages (id, client_id, mailbox_id, provider_message_id, thread_key, from_email, from_name, subject, body_text, received_at, processing_status) VALUES ('2b6b4148-d580-7b6f-d37f-13f48225b957', '860ef9e8-4bcc-f8b9-16d9-d181f3b9e00c', '4744df3a-7342-53dc-6d87-a124c29d3960', 'msg-2', NULL, 'hello@unknownbroker.com', 'Unknown Broker', 'Certificate attached', 'Please see attached certificate.', '2026-10-21T12:00:00Z', 'processed');
+INSERT INTO attachments (id, client_id, inbound_message_id, filename, content_type, byte_size, storage_key, sha256, is_likely_certificate, extracted_text, extraction_json) VALUES ('ccd21c70-2ed4-0d23-dff6-82d09a859c13', '860ef9e8-4bcc-f8b9-16d9-d181f3b9e00c', '2b6b4148-d580-7b6f-d37f-13f48225b957', 'certificate.pdf', 'application/pdf', NULL, 'demo/certificate.pdf', NULL, TRUE, 'CERTIFICATE OF LIABILITY INSURANCE
+INSURED: Summit Wellness Group
+CERTIFICATE HOLDER: Knight Real Estate
+PRODUCER: Broker Unknown
+POLICY NUMBER: SWG-9
+EFFECTIVE DATE: 10/01/2026
+EXPIRATION DATE: 10/01/2027', '{}'::jsonb);
+INSERT INTO certificates (id, client_id, entity_id, inbound_message_id, attachment_id, status, review_status, confidence_score, insured_name, certificate_holder, producer_name, carrier_summary, policy_summary_json, effective_date, expiration_date, received_date, is_active, supersedes_certificate_id, parsed_json) VALUES ('13baba0c-97b0-cddc-a3bb-21e4e574e96b', '860ef9e8-4bcc-f8b9-16d9-d181f3b9e00c', '28b97e05-ef31-93f5-525f-151ff2e29a88', NULL, NULL, 'received', 'accepted', NULL, 'Lone Star Therapy, LLC', NULL, NULL, NULL, '[]'::jsonb, NULL, '2025-12-31', NULL, FALSE, NULL, '{"relationship":null,"reminderEvents":[]}'::jsonb);
+INSERT INTO certificates (id, client_id, entity_id, inbound_message_id, attachment_id, status, review_status, confidence_score, insured_name, certificate_holder, producer_name, carrier_summary, policy_summary_json, effective_date, expiration_date, received_date, is_active, supersedes_certificate_id, parsed_json) VALUES ('0b87c75a-3509-b714-cab0-c3398430f937', '860ef9e8-4bcc-f8b9-16d9-d181f3b9e00c', 'be9fdf87-f710-86f1-621f-316b0027ded4', NULL, NULL, 'received', 'accepted', NULL, 'Apex Mechanical Services', NULL, NULL, NULL, '[]'::jsonb, NULL, '2026-09-30', NULL, TRUE, NULL, '{"relationship":null,"reminderEvents":[]}'::jsonb);
+COMMIT;

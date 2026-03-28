@@ -1,0 +1,26 @@
+[
+  {
+    "entityType": "tenant",
+    "name": "Acme Retail LLC",
+    "property": "Riversouth",
+    "primaryEmail": "ops@acmeretail.example"
+  },
+  {
+    "entityType": "tenant",
+    "name": "South Corner Coffee",
+    "property": "Riversouth",
+    "primaryEmail": "owner@southcorner.example"
+  },
+  {
+    "entityType": "vendor",
+    "name": "BlueLine HVAC Services",
+    "property": "Riversouth",
+    "primaryEmail": "certs@bluelinehvac.example"
+  },
+  {
+    "entityType": "vendor",
+    "name": "Capstone Janitorial",
+    "property": "Riversouth",
+    "primaryEmail": "insurance@capstonejanitorial.example"
+  }
+]

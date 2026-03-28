@@ -1,0 +1,124 @@
+{
+  "client": {
+    "id": "client-knight",
+    "name": "Knight Real Estate",
+    "slug": "knight-real-estate",
+    "timezone": "America/Chicago"
+  },
+  "entityTypes": [
+    {
+      "id": "entity-type-tenant",
+      "clientId": "client-knight",
+      "key": "tenant",
+      "label": "Tenant"
+    },
+    {
+      "id": "entity-type-vendor",
+      "clientId": "client-knight",
+      "key": "vendor",
+      "label": "Vendor"
+    }
+  ],
+  "properties": [
+    {
+      "id": "property-riversouth",
+      "clientId": "client-knight",
+      "name": "Riversouth Building",
+      "code": "RIVERSOUTH"
+    },
+    {
+      "id": "property-westgate",
+      "clientId": "client-knight",
+      "name": "Westgate Office Center",
+      "code": "WESTGATE"
+    }
+  ],
+  "entities": [
+    {
+      "id": "entity-lone-star",
+      "clientId": "client-knight",
+      "entityTypeId": "entity-type-tenant",
+      "propertyId": "property-riversouth",
+      "name": "Lone Star Therapy, LLC",
+      "primaryEmail": "ops@lonestartherapy.com",
+      "alternateEmails": [
+        "broker@lonestarinsurance.com"
+      ]
+    },
+    {
+      "id": "entity-aurora",
+      "clientId": "client-knight",
+      "entityTypeId": "entity-type-tenant",
+      "propertyId": "property-westgate",
+      "name": "Aurora Wealth Partners",
+      "primaryEmail": "office@aurorawealth.com",
+      "alternateEmails": []
+    },
+    {
+      "id": "entity-apex",
+      "clientId": "client-knight",
+      "entityTypeId": "entity-type-vendor",
+      "propertyId": null,
+      "name": "Apex Mechanical Services",
+      "primaryEmail": "service@apexmechanical.com",
+      "alternateEmails": [
+        "certs@apexmechanical.com"
+      ]
+    }
+  ],
+  "certificates": [
+    {
+      "id": "cert-lone-star-2025",
+      "clientId": "client-knight",
+      "entityId": "entity-lone-star",
+      "insuredName": "Lone Star Therapy, LLC",
+      "expirationDate": "2025-12-31",
+      "policyNumber": "GL-1001",
+      "isActive": false
+    },
+    {
+      "id": "cert-apex-2026",
+      "clientId": "client-knight",
+      "entityId": "entity-apex",
+      "insuredName": "Apex Mechanical Services",
+      "expirationDate": "2026-09-30",
+      "policyNumber": "APEX-77",
+      "isActive": true
+    }
+  ],
+  "sampleMessages": [
+    {
+      "id": "msg-1",
+      "fromEmail": "broker@lonestarinsurance.com",
+      "fromName": "Broker Team",
+      "subject": "Updated COI for Lone Star Therapy",
+      "bodyText": "Attached is the updated certificate for Lone Star Therapy. Please replace the prior version on file.",
+      "receivedAt": "2026-10-20T15:30:00Z",
+      "attachments": [
+        {
+          "id": "att-1",
+          "filename": "LoneStarTherapy-COI.pdf",
+          "contentType": "application/pdf",
+          "text": "CERTIFICATE OF LIABILITY INSURANCE\nINSURED: Lone Star Therapy, LLC\nCERTIFICATE HOLDER: Knight Real Estate\nPRODUCER: Hill Country Insurance\nPOLICY NUMBER: GL-1001\nEFFECTIVE DATE: 01/01/2026\nEXPIRATION DATE: 12/31/2026"
+        }
+      ]
+    },
+    {
+      "id": "msg-2",
+      "fromEmail": "hello@unknownbroker.com",
+      "fromName": "Unknown Broker",
+      "subject": "Certificate attached",
+      "bodyText": "Please see attached certificate.",
+      "receivedAt": "2026-10-21T12:00:00Z",
+      "attachments": [
+        {
+          "id": "att-2",
+          "filename": "certificate.pdf",
+          "contentType": "application/pdf",
+          "text": "CERTIFICATE OF LIABILITY INSURANCE\nINSURED: Summit Wellness Group\nCERTIFICATE HOLDER: Knight Real Estate\nPRODUCER: Broker Unknown\nPOLICY NUMBER: SWG-9\nEFFECTIVE DATE: 10/01/2026\nEXPIRATION DATE: 10/01/2027"
+        }
+      ]
+    }
+  ],
+  "reviewOverrides": {}
+}
