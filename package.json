@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "start": "node src/server.js",
     "demo": "node src/demo.js",
     "dev": "node src/server.js",
     "export:postgres-seed": "node src/cli/export-postgres-seed.js",
