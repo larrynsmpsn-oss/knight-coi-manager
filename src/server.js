@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import http from 'node:http';
+import fs from 'node:fs';
 import path from 'node:path';
 import { URL } from 'node:url';
 import { fileURLToPath } from 'node:url';
@@ -226,6 +227,7 @@ function renderHtml(payload) {
       <h1>Knight COI Manager Demo</h1>
       <p><strong>Client:</strong> ${payload.client.name}</p>
       <p>Thin local operator UI on top of the seeded intake, matching, review, reminder, and roster-onboarding APIs.</p>
+      <p><strong>📚 Documentation:</strong> <a href="/docs">View User Guides</a> | <a href="/docs/quick-start">Quick Start</a> | <a href="/docs/user-guide">User Guide</a></p>
       <div id="flash" class="flash"></div>
       <div class="toolbar">
         <button class="action-btn secondary" data-action="reset-demo">Reset demo state</button>
@@ -659,6 +661,24 @@ const server = http.createServer(async (req, res) => {
       return;
     case '/api/inbox':
       writeJson(res, 200, payload.inbox);
+      return;
+    case '/docs':
+    case '/docs/':
+      const indexPath = path.join(__dirname, '../docs/index.html');
+      res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
+      res.end(fs.readFileSync(indexPath, 'utf8'));
+      return;
+    case '/docs/quick-start':
+    case '/docs/quick-start.html':
+      const quickStartPath = path.join(__dirname, '../docs/quick-start.html');
+      res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
+      res.end(fs.readFileSync(quickStartPath, 'utf8'));
+      return;
+    case '/docs/user-guide':
+    case '/docs/user-guide.html':
+      const userGuidePath = path.join(__dirname, '../docs/user-guide.html');
+      res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
+      res.end(fs.readFileSync(userGuidePath, 'utf8'));
       return;
     default:
       res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
